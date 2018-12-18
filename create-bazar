@@ -1,0 +1,35 @@
+#Creation d'un bordel
+
+#Delete last directory fixtures
+rm -rf ./fixtures
+
+#Création d'un bordel
+mkdir -p ./fixtures/bazar/lol
+
+#Création de fichier random
+touch ./fixtures/bazar/text.txt \
+	./fixtures/bazar/bde.txt \
+	./fixtures/bazar/index.html \
+	./fixtures/bazar/robots.txt \
+	./fixtures/bazar/styles.css
+
+#Ouverture du dossier pour les images
+cd ./fixtures/bazar
+
+#Telechargement de plusieurs images automatiquement
+i=0
+j=0
+k=0
+
+while [ $j -ne 1 -o $i -ne 1 ] ; do
+        wget  www.lesite.fr/dossier/image0$k$j$i.png
+        ((i++))
+        if [ $i -eq 10 ] ; then
+                i=0
+                ((j++))
+        fi
+        if [ $j -eq 10 ] ; then
+                j=0
+                ((k++))
+        fi
+done
